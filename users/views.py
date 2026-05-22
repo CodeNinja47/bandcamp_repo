@@ -37,6 +37,7 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = authenticate(
+            request,
             email=serializer.validated_data['email'],
             password=serializer.validated_data['password']
         )
@@ -87,4 +88,6 @@ class ChangePasswordView(APIView):
             )
         user.set_password(serializer.validated_data['new_password'])
         user.save()
-        return Response({'message': 'Password changed successfully'})
+        return Response(
+            {'message': 'Password changed successfully'}
+        )
