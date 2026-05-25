@@ -51,3 +51,29 @@ class ChangePasswordSerializer(serializers.Serializer):
         write_only=True,
         validators=[validate_password]
     )
+
+
+class PasswordResetRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value):
+        if not User.objects.filter(email=value).exists():
+            raise serializers.ValidationError(
+                'No user found with this email!'
+            )
+        return value
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    new_password = serializers.CharField(
+        write_only=True,
+        validators=[validate_password]
+    )
+    new_password2 = serializers.CharField(write_only=True)
+
+    def validate(self, attrs):
+        if attrs['new_password'] != attrs['new_password2']:
+            raise serializers.ValidationError(
+                {"new_password": "Passwords do not match!"}
+            )
+        return attrs

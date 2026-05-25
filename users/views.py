@@ -4,11 +4,14 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, get_user_model
+from django.utils.crypto import get_random_string
 from .serializers import (
     RegisterSerializer,
     LoginSerializer,
     UserSerializer,
-    ChangePasswordSerializer
+    ChangePasswordSerializer,
+    PasswordResetRequestSerializer,
+    PasswordResetConfirmSerializer
 )
 
 User = get_user_model()
@@ -90,4 +93,48 @@ class ChangePasswordView(APIView):
         user.save()
         return Response(
             {'message': 'Password changed successfully'}
+        )
+
+
+class PasswordResetRequestView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = PasswordResetRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data['email']
+        user = User.objects.get(email=email)
+
+        # Generate reset token
+        token = get_random_string(50)
+        user.password_reset_token = token
+        user.save()
+
+        # In production you would send email here
+        # For now just return the token
+        return Response({
+            'message': 'Password reset token generated!',
+            'reset_token': token
+        })
+
+
+class PasswordResetConfirmView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, token):
+        try:
+            user = User.objects.get(password_reset_token=token)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'Invalid reset token!'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        serializer = PasswordResetConfirmSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user.set_password(serializer.validated_data['new_password'])
+        user.password_reset_token = None
+        user.save()
+        return Response(
+            {'message': 'Password reset successfully!'}
         )

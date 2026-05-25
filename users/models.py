@@ -35,9 +35,20 @@ class User(AbstractUser):
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
-
+    
+    password_reset_token = models.CharField(
+    max_length=50,
+    null=True,
+    blank=True
+)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+
+    def save(self, *args, **kwargs):
+    # If user is superuser or staff, set role to admin
+    	if self.is_superuser or self.is_staff:
+        	self.role = 'admin'
+    	super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'users_user'
