@@ -45,15 +45,17 @@ class TrackUploadView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
     	track = serializer.save()
-    	# Create processing jobs and trigger transcoding
+    # Create processing jobs
     	for format in ['mp3', 'aac', 'ogg']:
         	ProcessingJob.objects.create(
             		track=track,
             		format=format,
             		status='pending'
         )
-    # Trigger async transcoding
-    	from .tasks import transcode_audio
+    # Extract metadata
+    	from .tasks import transcode_audio, extract_track_metadata
+    	extract_track_metadata.delay(track.id)
+    # Trigger transcoding
     	for format in ['mp3', 'aac', 'ogg']:
         	transcode_audio.delay(track.id, format)
     	return track
@@ -117,3 +119,32 @@ class PublicTrackListView(generics.ListAPIView):
             visibility='public',
             transcoding_status='completed'
         )
+class TrackMetadataView(generics.RetrieveAPIView):
+    serializer_class = TrackSerializer
+    permission_classes = [IsAuthenticated]
+
+    def retrieve(self, request, *args, **kwargs):
+        track = self.get_object()
+        from .metadata import extract_metadata
+        metadata = extract_metadata(track.original_file.path)
+        return Response({
+            'track_id': track.id,
+            'title': track.title,
+            'duration': track.duration,
+            'file_size': track.file_size,
+            'metadata': metadata
+        })
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.role == 'admin':
+            return Track.objects.all()
+        try:
+            artist_profile = user.artist_profile
+            from django.db import models
+            return Track.objects.filter(
+                models.Q(release__artist=artist_profile) |
+                models.Q(release__isnull=True)
+            )
+        except:
+            return Track.objects.none()

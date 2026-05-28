@@ -69,6 +69,10 @@ def transcode_audio(self, track_id, format):
         # Get file size
         file_size = os.path.getsize(output_path)
 
+        # Get metadata of transcoded file
+        from .metadata import extract_metadata
+        metadata = extract_metadata(output_path)
+
         # Save track file
         relative_path = os.path.relpath(
             output_path,
@@ -78,7 +82,10 @@ def transcode_audio(self, track_id, format):
             track=track,
             file=relative_path,
             format=format,
-            file_size=file_size
+            file_size=file_size,
+            bitrate=metadata.get('bitrate') if metadata else None,
+            sample_rate=metadata.get('sample_rate') if metadata else None,
+            codec=metadata.get('codec') if metadata else None
         )
 
         # Update job status
@@ -103,10 +110,34 @@ def transcode_audio(self, track_id, format):
         job.retries += 1
         job.save()
 
-        # Update track status
         track = Track.objects.get(id=track_id)
         track.transcoding_status = 'failed'
         track.save()
 
-        # Retry if possible
         raise self.retry(exc=exc, countdown=60)
+
+
+@shared_task
+def extract_track_metadata(track_id):
+    """
+    Extract and save metadata from uploaded track
+    """
+    from .models import Track
+    from .metadata import extract_metadata
+
+    try:
+        track = Track.objects.get(id=track_id)
+        file_path = track.original_file.path
+
+        metadata = extract_metadata(file_path)
+
+        if metadata:
+            # Update track with metadata
+            track.duration = metadata.get('duration')
+            track.file_size = metadata.get('file_size')
+            track.save()
+
+        return f"Metadata extracted for track {track_id}"
+
+    except Exception as e:
+        return f"Error extracting metadata: {e}"
