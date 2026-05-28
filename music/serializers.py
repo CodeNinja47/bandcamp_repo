@@ -1,14 +1,12 @@
 from rest_framework import serializers
 from .models import Track, TrackFile, Genre, ProcessingJob
 from users.validators import validate_audio_file_size, validate_audio_format
-import os
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = ['id', 'name', 'slug']
         read_only_fields = ['id']
-
 
 class TrackFileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,7 +18,6 @@ class TrackFileSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at']
 
-
 class ProcessingJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProcessingJob
@@ -30,7 +27,6 @@ class ProcessingJobSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
-
 
 class TrackSerializer(serializers.ModelSerializer):
     track_files = TrackFileSerializer(many=True, read_only=True)
@@ -53,7 +49,6 @@ class TrackSerializer(serializers.ModelSerializer):
         validate_audio_file_size(value)
         validate_audio_format(value)
         return value
-
 
 class TrackUploadSerializer(serializers.ModelSerializer):
     class Meta:

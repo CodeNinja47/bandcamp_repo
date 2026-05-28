@@ -1,13 +1,9 @@
-from django.shortcuts import render
-from django.db import models
-
-# Create your views here.
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import MultiPartParser, FormParser
-from django.shortcuts import get_object_or_404
+from django.db import models
 from .models import Track, TrackFile, Genre, ProcessingJob
 from .serializers import (
     TrackSerializer,
@@ -41,6 +37,7 @@ class TrackListView(generics.ListAPIView):
         except:
             return Track.objects.none()
 
+
 class TrackUploadView(generics.CreateAPIView):
     serializer_class = TrackUploadSerializer
     permission_classes = [IsAuthenticated]
@@ -48,7 +45,6 @@ class TrackUploadView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         track = serializer.save()
-        # Create processing jobs for each format
         for format in ['mp3', 'aac', 'ogg']:
             ProcessingJob.objects.create(
                 track=track,
@@ -58,13 +54,11 @@ class TrackUploadView(generics.CreateAPIView):
         return track
 
     def create(self, request, *args, **kwargs):
-        # Only artists can upload tracks
         if request.user.role != 'artist':
             return Response(
                 {'error': 'Only artists can upload tracks!'},
                 status=status.HTTP_403_FORBIDDEN
             )
-        # Check if artist has a profile
         if not hasattr(request.user, 'artist_profile'):
             return Response(
                 {'error': 'Please create an artist profile first!'},
@@ -84,7 +78,8 @@ class TrackDetailView(generics.RetrieveUpdateDestroyAPIView):
         try:
             artist_profile = user.artist_profile
             return Track.objects.filter(
-                release__artist=artist_profile
+                models.Q(release__artist=artist_profile) |
+                models.Q(release__isnull=True)
             )
         except:
             return Track.objects.none()
