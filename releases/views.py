@@ -1,3 +1,5 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -17,6 +19,15 @@ from .serializers import (
 class ReleaseListView(generics.ListAPIView):
     serializer_class = ReleaseSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter
+    ]
+    filterset_fields = ['visibility', 'release_type']
+    search_fields = ['title', 'description']
+    ordering_fields = ['created_at', 'title', 'release_date']
+    ordering = ['-created_at']
 
     def get_queryset(self):
         user = self.request.user

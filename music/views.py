@@ -1,3 +1,5 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -19,10 +21,18 @@ class GenreListView(generics.ListCreateAPIView):
     serializer_class = GenreSerializer
     permission_classes = [IsAuthenticated]
 
-
 class TrackListView(generics.ListAPIView):
     serializer_class = TrackSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter
+    ]
+    filterset_fields = ['visibility', 'transcoding_status']
+    search_fields = ['title', 'description']
+    ordering_fields = ['upload_timestamp', 'title']
+    ordering = ['-upload_timestamp']
 
     def get_queryset(self):
         user = self.request.user
@@ -30,13 +40,13 @@ class TrackListView(generics.ListAPIView):
             return Track.objects.all()
         try:
             artist_profile = user.artist_profile
+            from django.db import models
             return Track.objects.filter(
                 models.Q(release__artist=artist_profile) |
                 models.Q(release__isnull=True)
             )
         except:
             return Track.objects.none()
-
 
 class TrackUploadView(generics.CreateAPIView):
     serializer_class = TrackUploadSerializer
