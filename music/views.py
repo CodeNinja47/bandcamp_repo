@@ -44,14 +44,19 @@ class TrackUploadView(generics.CreateAPIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def perform_create(self, serializer):
-        track = serializer.save()
-        for format in ['mp3', 'aac', 'ogg']:
-            ProcessingJob.objects.create(
-                track=track,
-                format=format,
-                status='pending'
-            )
-        return track
+    	track = serializer.save()
+    	# Create processing jobs and trigger transcoding
+    	for format in ['mp3', 'aac', 'ogg']:
+        	ProcessingJob.objects.create(
+            		track=track,
+            		format=format,
+            		status='pending'
+        )
+    # Trigger async transcoding
+    	from .tasks import transcode_audio
+    	for format in ['mp3', 'aac', 'ogg']:
+        	transcode_audio.delay(track.id, format)
+    	return track
 
     def create(self, request, *args, **kwargs):
         if request.user.role != 'artist':
