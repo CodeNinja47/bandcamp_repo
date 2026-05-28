@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'users',
     'music',
     'releases',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -139,6 +138,7 @@ AUTH_USER_MODEL = 'users.User'
 
 STATIC_URL = 'static/'
 
-AUTHENTICATION_BACKENDS = [
-    'users.backends.EmailBackend',
-]
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

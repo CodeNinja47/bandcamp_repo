@@ -52,9 +52,11 @@ class Track(models.Model):
         PRIVATE = 'private', 'Private'
 
     release = models.ForeignKey(
-        'releases.Release',
-        on_delete=models.CASCADE,    # release deleted → tracks deleted
-        related_name='tracks'
+    'releases.Release',
+    on_delete=models.SET_NULL,
+    related_name='tracks',
+    null=True,
+    blank=True
     )
     title = models.CharField(
         max_length=255,
