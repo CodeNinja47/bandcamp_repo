@@ -6,6 +6,7 @@ __pycache__/
 .env
 *.sqlite3
 media/
+profile_images/
 staticfiles/
 .DS_Store
 *.log
