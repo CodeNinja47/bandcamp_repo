@@ -1,0 +1,1833 @@
+{
+  "info": {
+    "_postman_id": "24203d58-8868-4a3d-a2b0-2196018f3703",
+    "name": "BandCamp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55188510",
+    "_collection_link": "https://go.postman.co/collection/55188510-24203d58-8868-4a3d-a2b0-2196018f3703?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "arijitsingh@gmail.com",
+                  "type": "text",
+                  "uuid": "ff88e2da-c1e0-42da-8291-8be7e302fe56"
+                },
+                {
+                  "key": "username",
+                  "value": "arijitsingh",
+                  "type": "text",
+                  "uuid": "7b0dd435-d951-4a43-9380-b0bc23c4b9be"
+                },
+                {
+                  "key": "password",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "341d7e79-2da7-404c-a124-13583c19a374"
+                },
+                {
+                  "key": "password2",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "f2117a85-9f12-40ce-a429-b0d9b612e034"
+                },
+                {
+                  "key": "role",
+                  "value": "artist",
+                  "type": "text",
+                  "uuid": "c032c8b2-e88c-41fe-bce3-3d06292ff216"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/register/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "arijitsingh@gmail.com",
+                  "type": "text",
+                  "uuid": "34b2b8a9-fb3d-4415-bfc1-de3f075713a7"
+                },
+                {
+                  "key": "password",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "4d4b33be-64f0-4a15-ae43-9f933b51a388"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/login/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Copy",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "test@gmail.com",
+                  "type": "text",
+                  "uuid": "34b2b8a9-fb3d-4415-bfc1-de3f075713a7"
+                },
+                {
+                  "key": "password",
+                  "value": "test@123",
+                  "type": "text",
+                  "uuid": "4d4b33be-64f0-4a15-ae43-9f933b51a388"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/login/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/auth/profile/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "arijitsingh@gmail.com",
+                  "type": "text",
+                  "uuid": "8c9ce3cf-bf4e-4ef4-b836-61617d21cf7e"
+                },
+                {
+                  "key": "username",
+                  "value": "ArijitSingh",
+                  "type": "text",
+                  "uuid": "4b8d4eff-5fa5-48cd-a13e-3135c24cd7ab"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/profile/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "old_password",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "492dec85-27e6-4c78-a4ab-cea256acc37d"
+                },
+                {
+                  "key": "new_password",
+                  "value": "NewArijit@1234",
+                  "type": "text",
+                  "uuid": "56b43d7b-22b3-4654-92cd-8eb5a129bc92"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/password/change/?&",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "password",
+                "change",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text"
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Password Reset Request",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "arijitsingh@gmail.com",
+                  "type": "text",
+                  "uuid": "c360c547-ccb0-45c7-9f68-22054e2e0499"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/password/reset/?",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "password",
+                "reset",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Password Reset Confirm",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "new_password",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "9af600c2-74d5-4155-86b2-418864aa82af"
+                },
+                {
+                  "key": "new_password2",
+                  "value": "Arijit@1234",
+                  "type": "text",
+                  "uuid": "46ced23d-0eb8-4018-9588-2a3584a5755a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/auth/password/reset/confirm/{{resettoken}}/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "password",
+                "reset",
+                "confirm",
+                "{{resettoken}}",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/auth/logout/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "logout",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Artist Profiles",
+      "item": [
+        {
+          "name": "Create Artist Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "artist_name",
+                  "value": "Arijit Singh",
+                  "type": "text",
+                  "uuid": "73ec4b39-a45a-4064-9cf7-84484486c3f7"
+                },
+                {
+                  "key": "bio",
+                  "value": "Arijit Singh is an Indian playback singer and music composer known for his soulful voice",
+                  "type": "text",
+                  "uuid": "b259d7a8-14bb-4b15-bf06-fdd680866f61"
+                },
+                {
+                  "key": "social_links",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "08472e10-cc76-466f-a8c7-79a9ca8680db"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/artists/profile/create/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                "profile",
+                "create",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View Artist Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/artists/profile/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Artist Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "artist_name",
+                  "value": "Arijit Singh",
+                  "type": "text",
+                  "uuid": "5d64586b-782a-4e03-b152-244b058cfc40"
+                },
+                {
+                  "key": "bio",
+                  "value": "Arijit Singh is an Indian playback singer and music composer known for his soulful voice",
+                  "type": "text",
+                  "uuid": "01898d39-02a3-4632-acff-435dd0d885df"
+                },
+                {
+                  "key": "profile_image",
+                  "type": "file",
+                  "uuid": "d0705dbe-e6ca-4761-8671-cf8dc2f8e53b",
+                  "src": "/C:/Users/Jyoba/OneDrive/Pictures/cat.jpg"
+                },
+                {
+                  "key": "social_links",
+                  "value": "{\"instagram\": \"https://www.instagram.com/arijitsingh/\"}",
+                  "type": "text",
+                  "uuid": "39a96b3b-8a27-4a1f-84b6-ebfd15d59f02"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/artists/profile/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List All Artists (public)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "artist_name",
+                  "value": "Arijit Singh",
+                  "type": "text",
+                  "uuid": "5d64586b-782a-4e03-b152-244b058cfc40"
+                },
+                {
+                  "key": "bio",
+                  "value": "Arijit Singh is an Indian playback singer and music composer known for his soulful voice",
+                  "type": "text",
+                  "uuid": "01898d39-02a3-4632-acff-435dd0d885df"
+                },
+                {
+                  "key": "profile_image",
+                  "type": "file",
+                  "uuid": "d0705dbe-e6ca-4761-8671-cf8dc2f8e53b",
+                  "src": "/C:/Users/Jyoba/OneDrive/Pictures/cat.jpg"
+                },
+                {
+                  "key": "social_links",
+                  "value": "{\"instagram\": \"https://www.instagram.com/arijitsingh/\"}",
+                  "type": "text",
+                  "uuid": "39a96b3b-8a27-4a1f-84b6-ebfd15d59f02"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/artists/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Artist Profile",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{deltoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/artists/profile/delete/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                "profile",
+                "delete",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View Specific Artist (public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/artists/4/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "artists",
+                "4",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Music - Genres",
+      "item": [
+        {
+          "name": "Create Genres",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Folk\",\r\n    \"slug\": \"folk\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/music/genres/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "genres",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Genres",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/genres/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "genres",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Music - Tracks",
+      "item": [
+        {
+          "name": "Upload Track",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Gehra Hua",
+                  "type": "text",
+                  "uuid": "17862f5f-3c92-47df-bbf5-9d9aaea4031d"
+                },
+                {
+                  "key": "description",
+                  "value": "Bollywood Ballad from the movie Dhurandhar",
+                  "type": "text",
+                  "uuid": "5361af38-74b6-4cdd-bec2-6b172ccf5481"
+                },
+                {
+                  "key": "track_number",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "4a07e415-c122-4106-ae65-d82a8b1ee7b7"
+                },
+                {
+                  "key": "visibility",
+                  "value": "public",
+                  "type": "text",
+                  "uuid": "cd1e085d-f478-4c27-b094-23d50670495e"
+                },
+                {
+                  "key": "original_file",
+                  "type": "file",
+                  "uuid": "7546d299-b874-4572-a3d8-dd505cb92705",
+                  "src": "/C:/Users/Jyoba/Downloads/𝙂𝙚𝙝𝙧𝙖 𝙃𝙪𝙖.mp3"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/music/tracks/upload/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "upload",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Track 1",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Tum Hi Ho",
+                  "type": "text",
+                  "uuid": "17862f5f-3c92-47df-bbf5-9d9aaea4031d"
+                },
+                {
+                  "key": "description",
+                  "value": "Bollywood Ballad from the movie Ashiqui 2. This is a slowed version",
+                  "type": "text",
+                  "uuid": "5361af38-74b6-4cdd-bec2-6b172ccf5481"
+                },
+                {
+                  "key": "track_number",
+                  "value": "2",
+                  "type": "text",
+                  "uuid": "4a07e415-c122-4106-ae65-d82a8b1ee7b7"
+                },
+                {
+                  "key": "visibility",
+                  "value": "public",
+                  "type": "text",
+                  "uuid": "cd1e085d-f478-4c27-b094-23d50670495e"
+                },
+                {
+                  "key": "original_file",
+                  "type": "file",
+                  "uuid": "7546d299-b874-4572-a3d8-dd505cb92705",
+                  "src": "/C:/Users/Jyoba/Downloads/Arijit Singh - Tum Hi Ho [SlowedReverb].mp3"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/music/tracks/upload/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "upload",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List My Tracks",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Track Detail",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/4/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "4",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Track",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Gehra Hua",
+                  "type": "text",
+                  "uuid": "17862f5f-3c92-47df-bbf5-9d9aaea4031d"
+                },
+                {
+                  "key": "description",
+                  "value": "Bollywood Ballad from the movie Dhurandhar. This is the movie version",
+                  "type": "text",
+                  "uuid": "5361af38-74b6-4cdd-bec2-6b172ccf5481"
+                },
+                {
+                  "key": "track_number",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "4a07e415-c122-4106-ae65-d82a8b1ee7b7"
+                },
+                {
+                  "key": "visibility",
+                  "value": "public",
+                  "type": "text",
+                  "uuid": "cd1e085d-f478-4c27-b094-23d50670495e"
+                },
+                {
+                  "key": "original_file",
+                  "type": "file",
+                  "uuid": "7546d299-b874-4572-a3d8-dd505cb92705",
+                  "src": "/C:/Users/Jyoba/Downloads/𝙂𝙚𝙝𝙧𝙖 𝙃𝙪𝙖.mp3"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/music/tracks/4/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "4",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Track Metadata",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/4/metadata/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "4",
+                "metadata",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Track Files",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/4/files/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "4",
+                "files",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Processing Jobs",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/4/jobs/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "4",
+                "jobs",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Track",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/tracks/5/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "tracks",
+                "5",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Public Tracks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/music/public/tracks/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "music",
+                "public",
+                "tracks",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Releases",
+      "item": [
+        {
+          "name": "Create Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Best of Arijit Singh\",\r\n    \"description\": \"The popular favourites of the crowd by Arijit Singh\",\r\n    \"release_type\": \"album\",\r\n    \"release_date\": \"2013-04-26\",\r\n    \"visibility\": \"private\",\r\n    \"genre_names\": [\"Bollywood\", \"Romantic\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/releases/create/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "create",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Release Copy",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Duplicate\",\r\n    \"description\": \"The popular favourites of the crowd \",\r\n    \"release_type\": \"album\",\r\n    \"release_date\": \"2013-04-26\",\r\n    \"visibility\": \"private\",\r\n    \"genre_names\": [\"Bollywood\", \"Romantic\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/releases/create/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "create",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List My Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Release Detail",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/6/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Best of Arijit Singh\",\r\n    \"description\": \"The popular crowd favourites by Arijit Singh\",\r\n    \"release_type\": \"album\",\r\n    \"release_date\": \"2013-04-26\",\r\n    \"visibility\": \"public\",\r\n    \"genre_names\": [\"Bollywood\", \"Romantic\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/releases/6/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/7/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "7",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Track To Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"track_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/releases/6/add-track/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                "add-track",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Track From Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"track_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/releases/6/remove-track/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                "remove-track",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Publish Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/6/publish/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                "publish",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unpublish Release",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{token1}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/6/unpublish/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "6",
+                "unpublish",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Public Release",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/public/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "public",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Public Release Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/releases/public/6/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "releases",
+                "public",
+                "6",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Search All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/search/?q=Arijit",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "search",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Arijit"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Tracks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/search/?q=Gehra",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "search",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Gehra"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Releases",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/search/?q=best",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "search",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "best"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Artist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/search/?q=singh",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "search",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "singh"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
